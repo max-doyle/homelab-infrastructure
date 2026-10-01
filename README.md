@@ -23,7 +23,7 @@ An enterprise-patterned on-premises infrastructure designed around strict L2/L3 
 |   Proxmox VE    |          | Synology NAS  |          | HP MicroServer  |
 |   [unit-01]     |          |    [GOGUL]    |          |   [Server B]    |
 +-----------------+          +---------------+          +-----------------+
-
+```
 ### Segmentation Schema
 
 | VLAN ID | Subnet CIDR | Security Zone | Purpose & Workloads | Ingress Policy |
