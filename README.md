@@ -21,7 +21,7 @@ An enterprise-patterned on-premises infrastructure designed around strict L2/L3 
          | (VLAN 10/20/50 Trunk)     | (Access VLAN 30)          | (Dedicated MGMT)
 +--------+--------+          +-------+-------+          +--------+--------+
 |   Proxmox VE    |          | Synology NAS  |          | HP MicroServer  |
-|   [unit-01]     |          |    [GOGUL]    |          |   [Server B]    |
+|   [unit-01]     |          |    [GOGUL]    |          |    [unit-02]    |
 +-----------------+          +---------------+          +-----------------+
 ```
 ### Segmentation Schema
@@ -42,22 +42,15 @@ An enterprise-patterned on-premises infrastructure designed around strict L2/L3 
 The compute tier runs on Proxmox VE (Debian base), utilizing a kernel-level 802.1Q VLAN-aware bridge to decouple the hypervisor control plane from untagged physical traffic.
 
 ### Core Compute Node (`unit-01.nerv.geofront`)
-* **Processor**: Intel Core i7-4790K (4 cores, 8 threads @ 4.00GHz base)
-* **Motherboard**: ASRock Z97 Extreme6
-* **Memory**: 16GB DDR3
-* **Primary Storage**: 500GB M.2 SATA SSD
 * **Operating System**: Proxmox VE 9.2 (Debian base)
 * **Network Integration**: Single physical interface trunked via 802.1Q-aware Linux bridge (`vmbr0`), binding host management exclusively to tagged VLAN 10.
 
 ### Out-of-Band & Backup Tier (`Server B`)
-* **Hardware**: HP ProLiant MicroServer Gen8
-* **Processor**: Intel Xeon E3-1220L v2 (2 cores, 4 threads, 17W TDP)
-* **Memory**: 16GB ECC DDR3
-* **Management**: Dedicated physical HP iLO 4 interface assigned static IP on `VLAN 10 (MGMT)` for remote hardware diagnostics and pre-boot bare-metal power cycling.
+* **Management**: Dedicated physical HP iLO interface assigned static IP on `VLAN 10 (MGMT)` for remote hardware diagnostics and pre-boot bare-metal power cycling.
 * **Target Role**: Proxmox Backup Server (PBS) & secondary quorum witness.
 
 ### Centralized Storage Tier (`GOGUL`)
-* **Hardware**: Synology DS1815+
+* **Hardware**: Synology
 * **Storage Pools**: 
   * Primary Pool: 4 × 4TB HDDs (Bulk array / archival storage)
   * High-Performance Pool: 3 × 250GB SSDs (Low-latency container storage)
