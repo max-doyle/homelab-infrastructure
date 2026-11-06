@@ -1,5 +1,5 @@
 **Physical Topology**
-
+```text
 +---------------------------------------+
                      |        Upstream AmpliFi Router        |
                      +-------------------+-------------------+
@@ -44,10 +44,10 @@
   |          ASRock Z97 Extreme6 -> Physical NIC 1 (nic1)
   |
   +-- Uplink Trunk from HASEGAWA (LAN 1)
-
+```
 
 **Logical Topology**
-
+```text
   [WAN: Public / Double-NAT upstream]
                                                   |
                                                   v
@@ -97,3 +97,4 @@
                         |  • [Future VM]-> SERVICES Engine (Tag 50)          |
                         |  • [Future VM]-> Kali Sandbox Node (Tag 66)        |
                         +----------------------------------------------------+
+```
