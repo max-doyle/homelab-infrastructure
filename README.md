@@ -45,7 +45,7 @@ The compute tier runs on Proxmox VE (Debian base), utilizing a kernel-level 802.
 * **Operating System**: Proxmox VE 9.2 (Debian base)
 * **Network Integration**: Single physical interface trunked via 802.1Q-aware Linux bridge (`vmbr0`), binding host management exclusively to tagged VLAN 10.
 
-### Out-of-Band & Backup Tier (`Server B`)
+### Out-of-Band & Backup Tier (`unit-02.nerv.geofront`)
 * **Management**: Dedicated physical HP iLO interface assigned static IP on `VLAN 10 (MGMT)` for remote hardware diagnostics and pre-boot bare-metal power cycling.
 * **Target Role**: Proxmox Backup Server (PBS) & secondary quorum witness.
 
